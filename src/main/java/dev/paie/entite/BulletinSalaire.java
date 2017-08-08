@@ -2,12 +2,17 @@ package dev.paie.entite;
 
 import java.math.BigDecimal;
 
+
 public class BulletinSalaire {
 	
 	private Integer id;
 	private RemunerationEmploye remunerationEmploye;
 	private Periode periode;
 	private BigDecimal primeExceptionnelle;
+	
+	
+	public BulletinSalaire(){};
+	
 	
 	public RemunerationEmploye getRemunerationEmploye() {
 		return remunerationEmploye;
