@@ -11,4 +11,5 @@ public interface GradeService {
 	void mettreAJour(Grade grade);
 	List<Grade> lister();
 	
+	public void deleteTable(String table);
 }

@@ -22,6 +22,10 @@ public class GradeServiceJdbcTemplateTest {
 	@Autowired
 	private GradeService gradeService;
 	
+//	@Before
+//	public void deleteTable(){
+//		gradeService.deleteTable("Grade");
+//	}
 	
 // TODO sauvegarder un nouveau grade
 // TODO vérifier qu'il est possible de récupérer le nouveau grade via la méthode lister
@@ -34,9 +38,9 @@ public class GradeServiceJdbcTemplateTest {
 		Grade grade2 = new Grade(2, "grade_02", new BigDecimal(26.5), new BigDecimal(15.5));
 		Grade grade3 = new Grade(3, "grade_03", new BigDecimal(14.5), new BigDecimal(46.5));
 		
-//		gradeService.sauvegarder(grade1); //id - PK
-//		gradeService.sauvegarder(grade2);
-//		gradeService.sauvegarder(grade3);
+		gradeService.sauvegarder(grade1); //id - PK
+		gradeService.sauvegarder(grade2);
+		gradeService.sauvegarder(grade3);
 		
 		List<Grade> listGrade = gradeService.lister();
 		int count=0;
@@ -68,9 +72,12 @@ public class GradeServiceJdbcTemplateTest {
 			}
 		}
 		
+		
 		assertTrue(codeGradeModified.equalsIgnoreCase(newGrade.getCode()));
 		System.out.println("code modified for Grade with id = 1 :" + codeGradeModified);
 	}
+	
+	
 	
 	
 	
