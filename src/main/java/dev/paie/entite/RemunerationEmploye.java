@@ -1,12 +1,29 @@
 package dev.paie.entite;
 
+import java.util.Collection;
+
+import javax.persistence.CascadeType;
+import javax.persistence.FetchType;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
 public class RemunerationEmploye {
 	
 	private Integer id;
 	private String matricule;
+	
+	@ManyToOne(cascade= CascadeType.ALL, fetch=FetchType.EAGER)
 	private Entreprise entreprise;
+	
+	@ManyToOne(cascade= CascadeType.ALL, fetch=FetchType.EAGER)
 	private ProfilRemuneration profilRemuneration;
+	
+	@ManyToOne(cascade= CascadeType.ALL, fetch=FetchType.EAGER)
 	private Grade grade;
+	
+	@OneToMany(mappedBy= "remunerationEmploye", cascade= CascadeType.ALL, fetch=FetchType.EAGER)
+	private Collection<BulletinSalaire> bulletinSalaires;
+	
 	
 	public String getMatricule() {
 		return matricule;

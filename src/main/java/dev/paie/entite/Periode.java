@@ -1,14 +1,26 @@
 package dev.paie.entite;
 
 import java.time.LocalDate;
+import java.util.Collection;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
+@Entity
 public class Periode {
 	
+	@Id
 	private Integer id;
 	
 	private LocalDate dateDebut;
 	private LocalDate dateFin;
+	
+	@OneToMany(mappedBy= "periode", cascade= CascadeType.ALL, fetch=FetchType.EAGER)
+	private Collection<BulletinSalaire> bulletinSalaires;
+	
 	
 	public LocalDate getDateDebut() {
 		return dateDebut;

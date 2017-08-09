@@ -1,13 +1,25 @@
 package dev.paie.entite;
 
-public class Entreprise {
+import java.util.Collection;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+@Entity
+public class Entreprise {
+	@Id
 	private Integer id;
 	private String siret;
 	private String denomination;
 	private String adresse;
 	private String urssaf;
 	private String codeNaf;
+	
+	@OneToMany(mappedBy="entreprise" ,cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	private Collection<RemunerationEmploye>remunerationEmployes;
+	
 	
 	public String getDenomination() {
 		return denomination;

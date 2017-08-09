@@ -2,12 +2,24 @@ package dev.paie.entite;
 
 import java.math.BigDecimal;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
+@Entity
 public class BulletinSalaire {
-	
+	@Id
 	private Integer id;
+	
+	@ManyToOne(cascade= CascadeType.ALL, fetch=FetchType.EAGER)
 	private RemunerationEmploye remunerationEmploye;
+	
+	@ManyToOne(cascade= CascadeType.ALL, fetch=FetchType.EAGER)
 	private Periode periode;
+	
+	
 	private BigDecimal primeExceptionnelle;
 	
 	
