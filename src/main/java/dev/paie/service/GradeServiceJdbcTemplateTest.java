@@ -39,16 +39,13 @@ public class GradeServiceJdbcTemplateTest {
 //		gradeService.sauvegarder(grade3);
 		
 		List<Grade> listGrade = gradeService.lister();
+		int count=0;
 		
-		String codeGradeInserted = null ;
 		for (Grade g : listGrade) {
-			if(g.getCode().equalsIgnoreCase("grade_02")){
-			
-				codeGradeInserted = g.getCode();
-			}
+			count++;
 		}
 		
-		assertTrue(codeGradeInserted.equals(grade2.getCode()));
+		assertTrue(count==3);
 	}
 	
 
