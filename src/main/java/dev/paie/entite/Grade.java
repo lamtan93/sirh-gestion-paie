@@ -33,6 +33,17 @@ public class Grade {
 	public void setId(Integer id) {
 		this.id = id;
 	}
+	public Grade(){
+		
+	}
+	
+	public Grade(Integer id, String code, BigDecimal nbHeuresBase, BigDecimal tauxBase) {
+		
+		this.id = id;
+		this.code = code;
+		this.nbHeuresBase = nbHeuresBase;
+		this.tauxBase = tauxBase;
+	}
 	
 	
 
