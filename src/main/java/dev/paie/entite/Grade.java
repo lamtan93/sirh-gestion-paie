@@ -53,7 +53,6 @@ public class Grade {
 		this.id = id;
 	}
 	
-	
 	public Grade(Integer id, String code, BigDecimal nbHeuresBase, BigDecimal tauxBase) {
 		
 		this.id = id;
