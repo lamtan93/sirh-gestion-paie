@@ -2,8 +2,11 @@ package dev.paie.entite;
 
 import java.math.BigDecimal;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Cotisation {
@@ -15,6 +18,8 @@ public class Cotisation {
 	private BigDecimal tauxSalarial;
 	private BigDecimal tauxPatronal;
 	
+	@ManyToOne(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
+	private ProfilRemuneration profilRemuneration;
 	
 	public String getCode() {
 		return code;
