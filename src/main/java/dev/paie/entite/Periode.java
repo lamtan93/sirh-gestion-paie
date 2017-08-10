@@ -1,6 +1,7 @@
 package dev.paie.entite;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.persistence.CascadeType;
@@ -21,6 +22,10 @@ public class Periode {
 	@OneToMany(mappedBy= "periode", cascade= CascadeType.ALL, fetch=FetchType.EAGER)
 	private Collection<BulletinSalaire> bulletinSalaires;
 	
+	
+	public Periode(){
+		bulletinSalaires = new ArrayList<>();
+	}
 	
 	public LocalDate getDateDebut() {
 		return dateDebut;

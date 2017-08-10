@@ -24,6 +24,14 @@ public class Avantage {
 		return code;
 	}
 
+	public ProfilRemuneration getProfilRemuneration() {
+		return profilRemuneration;
+	}
+
+	public void setProfilRemuneration(ProfilRemuneration profilRemuneration) {
+		this.profilRemuneration = profilRemuneration;
+	}
+
 	public void setCode(String code) {
 		this.code = code;
 	}

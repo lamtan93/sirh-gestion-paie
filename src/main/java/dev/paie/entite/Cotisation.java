@@ -21,6 +21,12 @@ public class Cotisation {
 	@ManyToOne(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
 	private ProfilRemuneration profilRemuneration;
 	
+	public ProfilRemuneration getProfilRemuneration() {
+		return profilRemuneration;
+	}
+	public void setProfilRemuneration(ProfilRemuneration profilRemuneration) {
+		this.profilRemuneration = profilRemuneration;
+	}
 	public String getCode() {
 		return code;
 	}

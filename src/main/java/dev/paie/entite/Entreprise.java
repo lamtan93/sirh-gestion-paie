@@ -1,5 +1,6 @@
 package dev.paie.entite;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.persistence.CascadeType;
@@ -20,6 +21,10 @@ public class Entreprise {
 	@OneToMany(mappedBy="entreprise" ,cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 	private Collection<RemunerationEmploye>remunerationEmployes;
 	
+	
+	public Entreprise(){
+		remunerationEmployes = new ArrayList<>();
+	}
 	
 	public String getDenomination() {
 		return denomination;

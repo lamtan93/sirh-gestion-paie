@@ -1,6 +1,7 @@
 package dev.paie.entite;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.persistence.CascadeType;
@@ -17,6 +18,11 @@ public class Grade {
 	
 	@OneToMany(mappedBy="grade" ,cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 	private Collection<RemunerationEmploye>remunerationEmployes;
+	
+	
+	public Grade (){
+		remunerationEmployes = new ArrayList<>();
+	}
 	
 	public String getCode() {
 		return code;
@@ -42,9 +48,7 @@ public class Grade {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public Grade(){
-		
-	}
+	
 	
 	public Grade(Integer id, String code, BigDecimal nbHeuresBase, BigDecimal tauxBase) {
 		

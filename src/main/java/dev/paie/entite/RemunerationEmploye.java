@@ -1,5 +1,6 @@
 package dev.paie.entite;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.persistence.CascadeType;
@@ -24,6 +25,10 @@ public class RemunerationEmploye {
 	@OneToMany(mappedBy= "remunerationEmploye", cascade= CascadeType.ALL, fetch=FetchType.EAGER)
 	private Collection<BulletinSalaire> bulletinSalaires;
 	
+	
+	public RemunerationEmploye(){
+		bulletinSalaires = new ArrayList<>();
+	}
 	
 	public String getMatricule() {
 		return matricule;

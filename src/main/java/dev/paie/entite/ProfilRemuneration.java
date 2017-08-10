@@ -1,5 +1,6 @@
 package dev.paie.entite;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -26,6 +27,14 @@ public class ProfilRemuneration {
 	
 	@OneToMany(mappedBy="profilRemuneration" ,cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 	private Collection<RemunerationEmploye>remunerationEmployes;
+	
+	
+	
+	public ProfilRemuneration (){
+		cotisationsImposables = new ArrayList<>();
+		cotisationsNonImposables = new ArrayList<>();
+		avantages = new ArrayList<>();
+	}
 	
 	public Integer getId() {
 		return id;
