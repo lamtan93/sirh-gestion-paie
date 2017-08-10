@@ -1,12 +1,13 @@
 package dev.paie.entite;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Cotisation {
@@ -18,14 +19,15 @@ public class Cotisation {
 	private BigDecimal tauxSalarial;
 	private BigDecimal tauxPatronal;
 	
-	@ManyToOne(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
-	private ProfilRemuneration profilRemuneration;
+	@ManyToMany(cascade=CascadeType.ALL,fetch=FetchType.EAGER)
+	private List<ProfilRemuneration> profilRemunerations;
 	
-	public ProfilRemuneration getProfilRemuneration() {
-		return profilRemuneration;
+	
+	public List<ProfilRemuneration> getProfilRemunerations() {
+		return profilRemunerations;
 	}
-	public void setProfilRemuneration(ProfilRemuneration profilRemuneration) {
-		this.profilRemuneration = profilRemuneration;
+	public void setProfilRemunerations(List<ProfilRemuneration> profilRemunerations) {
+		this.profilRemunerations = profilRemunerations;
 	}
 	public String getCode() {
 		return code;

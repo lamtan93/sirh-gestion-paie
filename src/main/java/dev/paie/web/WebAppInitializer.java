@@ -15,6 +15,9 @@ public class WebAppInitializer implements WebApplicationInitializer {
 
 	@Override
 	public void onStartup(ServletContext servletContext) throws ServletException {
+		
+	
+		
 		// Initialisation du contexte Spring
 		AnnotationConfigWebApplicationContext webContext = new AnnotationConfigWebApplicationContext();
 		webContext.register(WebAppConfig.class);
@@ -48,7 +51,10 @@ public class WebAppInitializer implements WebApplicationInitializer {
 		 * 
 		 * </listener>
 		 */
+		
+		
 		servletContext.addListener(new ContextLoaderListener(webContext));
+		
 	}
-
+	
 }

@@ -12,7 +12,7 @@ import javax.persistence.OneToMany;
 
 @Entity
 public class Periode {
-	
+
 	@Id
 	private Integer id;
 	

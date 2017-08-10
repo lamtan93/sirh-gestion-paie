@@ -5,22 +5,26 @@ import java.util.Collection;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
-
+@Entity
 public class ProfilRemuneration {
 
+	@Id
 	private Integer id;
 	private String code;
 
-	@OneToMany(mappedBy="profilRemuneration", cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@ManyToMany(mappedBy="profilRemunerations", cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 	private List<Cotisation> cotisationsNonImposables;
 	
-	@OneToMany(mappedBy="profilRemuneration", cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@ManyToMany(mappedBy="profilRemunerations", cascade=CascadeType.ALL, fetch=FetchType.EAGER)
 	private List<Cotisation> cotisationsImposables;
 	
-	@OneToMany(mappedBy="profilRemuneration", cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@ManyToMany(mappedBy="profilRemunerations", cascade=CascadeType.ALL)
 	private List<Avantage> avantages;
 
 	
@@ -74,6 +78,14 @@ public class ProfilRemuneration {
 
 	public void setAvantages(List<Avantage> avantages) {
 		this.avantages = avantages;
+	}
+
+	public Collection<RemunerationEmploye> getRemunerationEmployes() {
+		return remunerationEmployes;
+	}
+
+	public void setRemunerationEmployes(Collection<RemunerationEmploye> remunerationEmployes) {
+		this.remunerationEmployes = remunerationEmployes;
 	}
 
 }
