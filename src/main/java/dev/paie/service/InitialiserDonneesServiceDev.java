@@ -6,10 +6,14 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import dev.paie.entite.Cotisation;
 import dev.paie.entite.Entreprise;
@@ -25,9 +29,6 @@ import dev.paie.repository.UtilisateurRepository;
 
 @Service
 public class InitialiserDonneesServiceDev implements InitialiserDonneesService{
-
-	private ClassPathXmlApplicationContext context;
-	
 	
 	//@Autowired ApplicationContext context; //2eme option
 
@@ -58,25 +59,32 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService{
 	Map<String, Grade> mapGrades;
 	Map<String, Entreprise> mapEntreprises;
 	Map<String, ProfilRemuneration> mapProfilRemunerations;
+	Map<String, Cotisation> mapCotisations;
 	
+	@PersistenceContext EntityManager em;
 	
 	
 	
 	List<Cotisation> cotis = new ArrayList<>();
 	
 	public  InitialiserDonneesServiceDev() {
-		context = new ClassPathXmlApplicationContext("entreprises.xml","grades.xml", "profils-remuneration.xml");
 		
-		mapGrades = context.getBeansOfType(Grade.class);
-		mapEntreprises = context.getBeansOfType(Entreprise.class);
-		mapProfilRemunerations = context.getBeansOfType(ProfilRemuneration.class);
-		
-		context.close();
 	}
 
 	
 	@Override
+	@Transactional
 	public void initialiser() {
+		
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("entreprises.xml","grades.xml", "profils-remuneration.xml", "cotisations-non-imposables.xml", "cotisations-imposables.xml" );
+		
+		mapGrades = context.getBeansOfType(Grade.class);
+		mapEntreprises = context.getBeansOfType(Entreprise.class);
+		mapProfilRemunerations = context.getBeansOfType(ProfilRemuneration.class);
+		mapCotisations = context.getBeansOfType(Cotisation.class);
+		//mapCotisationsImposables = context.getBeansOfType(Cotisation.class);
+		
+		
 		
 		for (String gradeKey : mapGrades.keySet()) {
 			gradeService.sauvegarder(mapGrades.get(gradeKey));
@@ -86,11 +94,15 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService{
 			entService.save(v);
 		});
 		
-		/*
-		mapProfilRemunerations.forEach((k, v) -> {
-			profilService.save(v);
+		
+		mapCotisations.forEach((k, v) -> {
+			em.persist(v);
 		});
-		*/
+		
+		mapProfilRemunerations.forEach((k, v) -> {
+			em.persist(v);
+		});
+		
 		
 		List<Periode> pers = new ArrayList<>();
 		
@@ -131,7 +143,7 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService{
 		);
 		
 		listUsers.stream().forEach(u -> userRepos.save(u));
-		
+		context.close();
 	}
 
 		

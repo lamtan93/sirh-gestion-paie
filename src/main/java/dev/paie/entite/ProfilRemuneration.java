@@ -22,15 +22,15 @@ public class ProfilRemuneration implements Serializable {
 	private Integer id;
 	private String code;
 
-	@ManyToMany(mappedBy = "profilRemunerations", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@ManyToMany(mappedBy = "profilRemuneration_CotisationsNonImposable", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<Cotisation> cotisationsNonImposables;
 
-	@ManyToMany(mappedBy = "profilRemunerations", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@ManyToMany(mappedBy = "profilRemuneration_CotisationsImposable", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<Cotisation> cotisationsImposables;
 
 	@ManyToMany(mappedBy = "profilRemunerations", cascade = CascadeType.ALL)
 	private List<Avantage> avantages;
-
+	
 	@OneToMany(mappedBy = "profilRemuneration", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private Collection<RemunerationEmploye> remunerationEmployes;
 

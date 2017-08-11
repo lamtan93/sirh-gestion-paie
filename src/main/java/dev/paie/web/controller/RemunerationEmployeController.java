@@ -11,6 +11,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import dev.paie.entite.Entreprise;
 import dev.paie.entite.Grade;
+import dev.paie.entite.ProfilRemuneration;
 import dev.paie.repository.EntrepriseRepository;
 import dev.paie.repository.ProfilRemunerationRepository;
 import dev.paie.service.GradeServiceJdbcTemplate;
@@ -38,10 +39,11 @@ public class RemunerationEmployeController {
 		
 		List<Grade>listGrades = gradeService.lister();
 		List<Entreprise> listEntreprises = entService.findAll();
+		List<ProfilRemuneration> listProfilRemunerations = profilService.findAll();
 		
 		mav.addObject("listGrades", listGrades);
 		mav.addObject("listEntreprises", listEntreprises);
-		
+		mav.addObject("listProfilRemuneration", listProfilRemunerations);
 		
 		mav.setViewName("employes/creerEmploye");
 		return mav;

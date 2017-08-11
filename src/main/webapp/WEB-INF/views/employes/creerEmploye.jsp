@@ -74,9 +74,11 @@
 						<div class="col-lg-10 col-lg-offset-1 ">
 							<br> <select class="form-control selectpicker show-tick">
 								<option value="" selected="hidden">Profil</option>
-								<option value="">Profil 1</option>
-								<option value="">Profil 2</option>
-								<option value="">Profil 3</option>
+								<c:if test="${ not empty listProfilRemunerations }">
+									<c:forEach var="p" items="${listProfilRemunerations}">
+										<option value="">${p.code }</option>
+									</c:forEach>
+								</c:if>
 							</select>
 
 						</div>
