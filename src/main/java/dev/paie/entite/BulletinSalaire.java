@@ -1,16 +1,23 @@
 package dev.paie.entite;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class BulletinSalaire {
+public class BulletinSalaire implements Serializable{
+	
+private static final long serialVersionUID = 1L;
+	
 	@Id
+	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private Integer id;
 	
 	@ManyToOne(cascade= CascadeType.ALL, fetch=FetchType.EAGER)

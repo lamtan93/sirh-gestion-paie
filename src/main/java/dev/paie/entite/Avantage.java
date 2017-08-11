@@ -1,46 +1,43 @@
 package dev.paie.entite;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
 @Entity
-public class Avantage {
+public class Avantage implements Serializable {
+
+	private static final long serialVersionUID = 1L;
 
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String code;
 	private String nom;
 	private BigDecimal montant;
 
-	@ManyToMany(cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<ProfilRemuneration> profilRemunerations;
-	
+
 	public String getCode() {
 		return code;
 	}
-
-	
-	
 
 	public List<ProfilRemuneration> getProfilRemunerations() {
 		return profilRemunerations;
 	}
 
-
-
-
 	public void setProfilRemunerations(List<ProfilRemuneration> profilRemunerations) {
 		this.profilRemunerations = profilRemunerations;
 	}
-
-
-
 
 	public void setCode(String code) {
 		this.code = code;
@@ -70,10 +67,10 @@ public class Avantage {
 		this.id = id;
 	}
 
-	public Avantage(){
-		
+	public Avantage() {
+
 	}
-	
+
 	public Avantage(Integer id, String code, String nom, BigDecimal montant) {
 		super();
 		this.id = id;
@@ -81,7 +78,5 @@ public class Avantage {
 		this.nom = nom;
 		this.montant = montant;
 	}
-	
-	
-	
+
 }

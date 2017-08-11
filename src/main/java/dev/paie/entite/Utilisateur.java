@@ -1,5 +1,7 @@
 package dev.paie.entite;
 
+import java.io.Serializable;
+
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -8,12 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Utilisateur {
+public class Utilisateur implements Serializable{
 	
-	public enum ROLES {
-		ROLE_ADMINISTRATEUR, ROLE_UTILISATEUR
-	}
-
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
 	private Integer id;
@@ -21,8 +19,14 @@ public class Utilisateur {
 	private String motDePasse;
 	private Boolean estActif;
 	
+	
+	public enum ROLES {
+		ROLE_ADMINISTRATEUR, ROLE_UTILISATEUR
+	}
 	@Enumerated(EnumType.STRING)
 	private ROLES role;
+	
+	
 	public Integer getId() {
 		return id;
 	}

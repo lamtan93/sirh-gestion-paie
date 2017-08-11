@@ -1,5 +1,6 @@
 package dev.paie.entite;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -14,35 +15,31 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 @Entity
-public class ProfilRemuneration {
+public class ProfilRemuneration implements Serializable {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
 	private String code;
 
-	@ManyToMany(mappedBy="profilRemunerations", cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+	@ManyToMany(mappedBy = "profilRemunerations", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<Cotisation> cotisationsNonImposables;
-	
-	@ManyToMany(mappedBy="profilRemunerations", cascade=CascadeType.ALL, fetch=FetchType.EAGER)
+
+	@ManyToMany(mappedBy = "profilRemunerations", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<Cotisation> cotisationsImposables;
-	
-	@ManyToMany(mappedBy="profilRemunerations", cascade=CascadeType.ALL)
+
+	@ManyToMany(mappedBy = "profilRemunerations", cascade = CascadeType.ALL)
 	private List<Avantage> avantages;
 
-	
-	
-	@OneToMany(mappedBy="profilRemuneration" ,cascade=CascadeType.ALL, fetch=FetchType.EAGER)
-	private Collection<RemunerationEmploye>remunerationEmployes;
-	
-	
-	
-	public ProfilRemuneration (){
+	@OneToMany(mappedBy = "profilRemuneration", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private Collection<RemunerationEmploye> remunerationEmployes;
+
+	public ProfilRemuneration() {
 		cotisationsImposables = new ArrayList<>();
 		cotisationsNonImposables = new ArrayList<>();
 		avantages = new ArrayList<>();
 	}
-	
+
 	public Integer getId() {
 		return id;
 	}
