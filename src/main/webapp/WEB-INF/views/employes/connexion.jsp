@@ -17,7 +17,7 @@ dist/css/bootstrap.css">
 <body class="container">
 	<h1>Connexion</h1>
 	<!-- Spring Security s'attend aux paramètres "username" et "password" -->
-	<form method="post" action="connexion/logging">
+	<form method="post">
 		<input name="username"> <input name="password" > 
 		<input class="btn btn-primary btn-success" type="submit" value="Se connecter">
 		
