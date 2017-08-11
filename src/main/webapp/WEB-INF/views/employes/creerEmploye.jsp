@@ -21,13 +21,13 @@ dist/css/bootstrap.css">
 <title>Creation de collaborateur</title>
 
 
-<c:import url="/index.html" />
+<!--<c:import url="/index.html" />-->
 
 </head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.css">
-<link rel="stylesheet" href="statique/css/monStyle.css">
-<link rel="stylesheet" href="statique/js/monJs.js">
+<link rel="stylesheet" href="css/monStyle.css">
+<link rel="stylesheet" href="js/monJs.js">
 
 <title>Creer Employe</title>
 </head>

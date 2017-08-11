@@ -1,27 +1,29 @@
 package dev.paie.entite;
 
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-import javax.persistence.Temporal;
 
 @Entity
 public class Periode {
 
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	
-	@Temporal(javax.persistence.TemporalType.TIMESTAMP)
-	private Date dateDebut;
-	@Temporal(javax.persistence.TemporalType.TIMESTAMP) 
-	private Date dateFin;
+	
+	private LocalDate dateDebut;
+	
+	private LocalDate dateFin;
 	
 	@OneToMany(mappedBy= "periode", cascade= CascadeType.ALL, fetch=FetchType.EAGER)
 	private Collection<BulletinSalaire> bulletinSalaires;
@@ -31,16 +33,16 @@ public class Periode {
 		bulletinSalaires = new ArrayList<>();
 	}
 	
-	public Date getDateDebut() {
+	public LocalDate getDateDebut() {
 		return dateDebut;
 	}
-	public void setDateDebut(Date dateDebut) {
+	public void setDateDebut(LocalDate dateDebut) {
 		this.dateDebut = dateDebut;
 	}
-	public Date getDateFin() {
+	public LocalDate getDateFin() {
 		return dateFin;
 	}
-	public void setDateFin(Date dateFin) {
+	public void setDateFin(LocalDate dateFin) {
 		this.dateFin = dateFin;
 	}
 	public Integer getId() {
@@ -50,7 +52,10 @@ public class Periode {
 		this.id = id;
 	}
 	
-	
+	public Periode(LocalDate dateDebut, LocalDate dateFin){
+		this.dateDebut = dateDebut;
+		this.dateFin = dateFin;
+	}
 	
 	
 
