@@ -26,6 +26,9 @@ public class Cotisation implements Serializable {
 	@ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<ProfilRemuneration> profilRemunerations;
 
+	
+	
+	
 	public List<ProfilRemuneration> getProfilRemunerations() {
 		return profilRemunerations;
 	}

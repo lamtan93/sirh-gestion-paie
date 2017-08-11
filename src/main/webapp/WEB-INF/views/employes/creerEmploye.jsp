@@ -12,16 +12,13 @@
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <link rel="stylesheet"
-	href="<%=request.getContextPath()%>/bootstrap-3.3.7-
-dist/css/bootstrap.css">
+	href="<%=request.getContextPath()%>/bootstrap-3.3.7-dist/css/bootstrap.css">
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/monStyle.css">
 <script src="<%=request.getContextPath()%>/js/monJs.js"></script>
 
-<title>Creation de collaborateur</title>
 
-
-<!--<c:import url="/index.html" />-->
+<c:import url="/index.html" />
 
 </head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
@@ -29,66 +26,91 @@ dist/css/bootstrap.css">
 <link rel="stylesheet" href="css/monStyle.css">
 <link rel="stylesheet" href="js/monJs.js">
 
-<title>Creer Employe</title>
 </head>
 <body>
 
-	<h1>Créer Employer</h1>
+
 	<div class="well">
-			<div id="myBorder"  class="col-lg-offset-4" >
-				<span id="labelNewCollab" class="label label-default ">New Employer</span>
-				<!-- 
+		<div id="myBorder" class="col-lg-offset-4">
+			<span id="labelNewCollab" class="label label-default ">New
+				Employer</span>
+			<!-- 
 							<c:if test="${ not empty message }">
 									<span id="labelMessage" class="label label-default ">${message}</span>
 									
 							</c:if>	
 							
-				 -->			
-				<div id="myForm">
-				
-					<form method="POST" accept-charset="UTF-8"   >
-					
-						<div class="row" >
-							<div class="col-lg-5 col-lg-offset-1 " >
-								<input class="form-control" type="text" id="inputNom" name="inputNom" placeholder="Nom*" required="required">
-							</div>
-							<div class="col-lg-5  " >
-								<input class="form-control" type="text" id="inputPrenom" name="inputPrenom" placeholder="Prenom*" required="required">
-							</div>
-						</div>
-						<br>
+				 -->
+			<div id="myForm">
 
-						<div class="row">
-								<div class="col-lg-10 col-lg-offset-1"><br>
-									<input class="form-control" type="date" id="inputDateNaissance" name="inputDateNaissance" placeholder="Date de naissance*" required="required"><br>
-								</div>
+				<form method="POST" accept-charset="UTF-8">
+
+					<div class="row">
+						<div class="col-lg-10 col-lg-offset-1 ">
+							<input class="form-control" type="text" id="inputMatricule"
+								name="inputMatricule" placeholder="Matricule*"
+								required="required">
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-lg-10 col-lg-offset-1 ">
+							<br>
+							<select class="form-control selectpicker show-tick">
+								<option value="" selected="hidden">Choisir Entreprise</option>
+								<c:if test="${ not empty listEntreprises }">
+									<c:forEach var="e" items="${listEntreprises}">
+										<option value="">${e.denomination }</option>
+									</c:forEach>
+								</c:if>
+							</select>
+						</div>
+					</div>
+
+
+
+
+					<div class="row">
+						<div class="col-lg-10 col-lg-offset-1 ">
+							<br> <select class="form-control selectpicker show-tick">
+								<option value="" selected="hidden">Profil</option>
+								<option value="">Profil 1</option>
+								<option value="">Profil 2</option>
+								<option value="">Profil 3</option>
+							</select>
+
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-lg-10 col-lg-offset-1 ">
+							<br> <select class="form-control selectpicker show-tick">
+								<option value="" selected="hidden">Grade</option>
+								<c:if test="${ not empty listGrades }">
+									<c:forEach var="g" items="${listGrades}">
+										<option value="">${g.code }</option>
+									</c:forEach>
+								</c:if>
+							</select>
+
+						</div>
+					</div>
+
+
+
+					<div class="row">
+						<div class="col-lg-offset-3 ">
+
+							<input id="buttonCreate" class="btn btn-default-outline  "
+								type="submit" name="" value="Créer">
 						</div>
 
-							<div class="row">
-								<div class="col-lg-10 col-lg-offset-1">
-									<input class="form-control" type="text" id="inputAdresse" name="inputAdresse" placeholder="Adresse*" required="required">
-								</div>
-							</div>
-							
-							<div class="row">
-								<div class="col-lg-10 col-lg-offset-1"><br>
-									<input class="form-control" type="date" id="inputNumeroSecure" name="inputNumeroSecure" placeholder="Numéro de sécurité sociale*" required="required"><br>
-								</div>
-							</div>
-							
-							<div class="row">
-								<div class="col-lg-offset-3 " >
-									
-									<input id="buttonCreate" class="btn btn-default  " type="submit" name="" value="Créer">
-								</div>
-								
-								
-							</div>
-				
-					</form>
-				</div>
-		</div>	
+
+					</div>
+
+				</form>
+			</div>
+		</div>
 	</div>
-	
 </body>
 </html>
