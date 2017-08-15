@@ -12,4 +12,6 @@ public interface GradeService {
 	List<Grade> lister();
 	
 	public void deleteTable(String table);
+	
+	//public Grade findGradeById(int id);
 }

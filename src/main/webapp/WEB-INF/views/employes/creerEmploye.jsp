@@ -25,6 +25,10 @@
 <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.css">
 <link rel="stylesheet" href="css/monStyle.css">
 <link rel="stylesheet" href="js/monJs.js">
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+ 	 
+	
+
 
 </head>
 <body>
@@ -34,21 +38,21 @@
 		<div id="myBorder" class="col-lg-offset-4">
 			<span id="labelNewCollab" class="label label-default ">New
 				Employer</span>
-			<!-- 
+			 
 							<c:if test="${ not empty message }">
 									<span id="labelMessage" class="label label-default ">${message}</span>
 									
 							</c:if>	
 							
-				 -->
+				 
 			<div id="myForm">
 
 				<form method="POST" accept-charset="UTF-8">
 
 					<div class="row">
 						<div class="col-lg-10 col-lg-offset-1 ">
-							<input class="form-control" type="text" id="inputMatricule"
-								name="inputMatricule" placeholder="Matricule*"
+							<input class="form-control" type="text" id="matricule"
+								name="matricule" placeholder="Matricule*"
 								required="required">
 						</div>
 					</div>
@@ -56,11 +60,11 @@
 					<div class="row">
 						<div class="col-lg-10 col-lg-offset-1 ">
 							<br>
-							<select class="form-control selectpicker show-tick">
+							<select class="form-control selectpicker show-tick" id="entreprise" name="entreprise">
 								<option value="" selected="hidden">Choisir Entreprise</option>
 								<c:if test="${ not empty listEntreprises }">
 									<c:forEach var="e" items="${listEntreprises}">
-										<option value="">${e.denomination }</option>
+										<option value="${e.id }">${e.denomination }</option>
 									</c:forEach>
 								</c:if>
 							</select>
@@ -72,11 +76,11 @@
 
 					<div class="row">
 						<div class="col-lg-10 col-lg-offset-1 ">
-							<br> <select class="form-control selectpicker show-tick">
-								<option value="" selected="hidden">Profil</option>
-								<c:if test="${ not empty listProfilRemunerations }">
-									<c:forEach var="p" items="${listProfilRemunerations}">
-										<option value="">${p.code }</option>
+							<br> <select class="form-control selectpicker show-tick" id="profil" name="profil">
+								<option value="" >Profil</option>
+								<c:if test="${ not empty listProfils }">
+									<c:forEach var="p" items="${listProfils}">
+										<option value="${p.id }">${p.code }</option>
 									</c:forEach>
 								</c:if>
 							</select>
@@ -86,11 +90,11 @@
 
 					<div class="row">
 						<div class="col-lg-10 col-lg-offset-1 ">
-							<br> <select class="form-control selectpicker show-tick">
+							<br> <select class="form-control selectpicker show-tick" id="grade" name="grade">
 								<option value="" selected="hidden">Grade</option>
 								<c:if test="${ not empty listGrades }">
 									<c:forEach var="g" items="${listGrades}">
-										<option value="">${g.code }</option>
+										<option value="${g.id }">${g.code }</option>
 									</c:forEach>
 								</c:if>
 							</select>
@@ -109,10 +113,31 @@
 
 
 					</div>
-
+						<sec:csrfInput/>
 				</form>
 			</div>
 		</div>
 	</div>
+	<!-- 
+<script type="text/javascript">
+		var matricule;
+		var entreprise;
+		var profil;
+		var grade;
+		$(document).ready(function() {
+			matricule = $("#matricule").val();
+			entreprise = $("#entreprise").val();
+			profil = $("#profil").val();
+			grade = $("#grade").val();
+		});
+		$("#buttonCreate").click(function() {
+			$("#matricule").val(matricule);
+			$("#entreprise").val(entreprise);
+			$("#profil").val(profil);
+			$("#grade").val(grade);
+			return false;
+		});
+	</script>
+ -->
 </body>
 </html>

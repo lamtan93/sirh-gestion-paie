@@ -29,12 +29,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
+		http.csrf().disable();
 		
 		http
 		.authorizeRequests()
 		.antMatchers("/bootstrap-3.3.7-dist/**","/css/**", "/js/**", "/images/**").permitAll()
 		.anyRequest().authenticated()
 		.and()
+//		.exceptionHandling().accessDeniedPage("/mvc/employes") //page de redirection
+//		.and()
 		.formLogin()
 		.loginPage("/mvc/connexion")
 		.permitAll();
