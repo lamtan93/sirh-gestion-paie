@@ -21,6 +21,8 @@ import dev.paie.entite.RemunerationEmploye;
 import dev.paie.repository.BulletinRepository;
 import dev.paie.repository.PeriodeRepository;
 import dev.paie.repository.RemunerationEmployeRepository;
+import dev.paie.service.BulletinService;
+import dev.paie.service.CalculerRemunerationService;
 
 @Controller
 @RequestMapping("/bulletins")
@@ -39,13 +41,18 @@ public class BulletinController {
 	@Autowired
 	RemunerationEmployeRepository reRepo;
 	
+	@Autowired
+	BulletinService bulletinService;
+	
+	
+	
 	@RequestMapping(method=RequestMethod.GET)
 	public ModelAndView displayListBulletins(){
 		ModelAndView mav = new ModelAndView();
 		
-		List<BulletinSalaire> listBulletins = bulletinRepo.findAll();
-		mav.addObject("listBulletins",listBulletins);
 		
+		mav.addObject("listBulletins",bulletinService.lister());
+		mav.setViewName("bulletins/listBulletins");
 		return mav;
 	}
 	
