@@ -67,8 +67,8 @@
 
 					<div class="row">
 						<div class="col-lg-10 col-lg-offset-1 ">
-							<br> <select class="form-control selectpicker show-tick" id="profil" name="profil">
-								<option value="" >Profil</option>
+							<br> <select class="form-control selectpicker show-tick" id="remunerationEmploye" name="remunerationEmploye">
+								<option value="" >Matricule</option>
 								<c:if test="${ not empty listRemunerationEmployes }">
 									<c:forEach var="p" items="${listRemunerationEmployes}">
 										<option value="${p.id }">${p.matricule }</option>
