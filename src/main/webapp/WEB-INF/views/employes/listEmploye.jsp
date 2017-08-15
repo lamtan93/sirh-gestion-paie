@@ -45,15 +45,15 @@
 				</thead>
 				<tbody>
 
-
+				<c:forEach var="emp" items="${listEmployes}">
 					<tr>
-						<c:forEach var="emp" items="${listEmployes}">
-							<td>12/08/2017</td>
+						
+							<td>16/08/2017</td>
 							<td>${emp.matricule}</td>
 							<td>${emp.grade.code}</td>
-						</c:forEach>
+						
 					</tr>
-
+				</c:forEach>
 
 				</tbody>
 			</table>
