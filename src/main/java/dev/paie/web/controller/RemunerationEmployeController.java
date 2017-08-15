@@ -45,6 +45,22 @@ public class RemunerationEmployeController {
 	@Autowired
 	GradeRepository gradeRepo;
 	
+	@Autowired
+	RemunerationEmployeRepository reRepo;
+	
+	
+	@RequestMapping(method=RequestMethod.GET)
+	public ModelAndView displayAllEmploye(){
+		ModelAndView mav = new ModelAndView();
+		List<RemunerationEmploye> listEmployes = reRepo.findAll();
+		mav.addObject("listEmployes", listEmployes);
+		mav.setViewName("employes/listEmploye");
+		
+		return mav;
+	}
+	
+	
+	
 	@Secured("ROLE_ADMINISTRATEUR")
 	@RequestMapping(method = RequestMethod.GET, path="creer")
 	public ModelAndView displayInfosCreationEmploye(){
