@@ -28,7 +28,7 @@
 <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
  	 
 	
-
+<title>Créer Bulletin</title>
 
 </head>
 <body>
@@ -37,11 +37,10 @@
 	<div class="well">
 		<div id="myBorder" class="col-lg-offset-4">
 			<span id="labelNewCollab" class="label label-default ">New
-				Employer</span>
+				Bulletin</span>
 			 
 							<c:if test="${ not empty message }">
 									<span id="labelMessage" class="label label-default ">${message}</span>
-									
 							</c:if>	
 							
 				 
@@ -51,20 +50,12 @@
 
 					<div class="row">
 						<div class="col-lg-10 col-lg-offset-1 ">
-							<input class="form-control" type="text" id="matricule"
-								name="matricule" placeholder="Matricule*"
-								required="required">
-						</div>
-					</div>
-
-					<div class="row">
-						<div class="col-lg-10 col-lg-offset-1 ">
 							<br>
-							<select class="form-control selectpicker show-tick" id="entreprise" name="entreprise">
-								<option value="" selected="hidden">Choisir Entreprise</option>
-								<c:if test="${ not empty listEntreprises }">
-									<c:forEach var="e" items="${listEntreprises}">
-										<option value="${e.id }">${e.denomination }</option>
+							<select class="form-control selectpicker show-tick" id="periode" name="periode">
+								<option value="" selected="hidden">Choisir Periode*</option>
+								<c:if test="${ not empty listPeriodes }">
+									<c:forEach var="e" items="${listPeriodes}">
+										<option value="${e.id }">${e.dateDebut}--${e.dateFin}</option>
 									</c:forEach>
 								</c:if>
 							</select>
@@ -78,30 +69,24 @@
 						<div class="col-lg-10 col-lg-offset-1 ">
 							<br> <select class="form-control selectpicker show-tick" id="profil" name="profil">
 								<option value="" >Profil</option>
-								<c:if test="${ not empty listProfils }">
-									<c:forEach var="p" items="${listProfils}">
-										<option value="${p.id }">${p.code }</option>
+								<c:if test="${ not empty listRemunerationEmployes }">
+									<c:forEach var="p" items="${listRemunerationEmployes}">
+										<option value="${p.id }">${p.matricule }</option>
 									</c:forEach>
 								</c:if>
 							</select>
 
 						</div>
 					</div>
+
 
 					<div class="row">
 						<div class="col-lg-10 col-lg-offset-1 ">
-							<br> <select class="form-control selectpicker show-tick" id="grade" name="grade">
-								<option value="" selected="hidden">Grade</option>
-								<c:if test="${ not empty listGrades }">
-									<c:forEach var="g" items="${listGrades}">
-										<option value="${g.id }">${g.code }</option>
-									</c:forEach>
-								</c:if>
-							</select>
-
+						<br><input class="form-control" type="text" id="primeExceptionnelle"
+								name="primeExceptionnelle" placeholder="Prime exceptionnelle*"
+								required="required">
 						</div>
 					</div>
-
 
 
 					<div class="row">
