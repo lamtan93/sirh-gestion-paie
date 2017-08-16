@@ -82,7 +82,7 @@ public class InitialiserDonneesServiceDev implements InitialiserDonneesService{
 		mapEntreprises = context.getBeansOfType(Entreprise.class);
 		mapProfilRemunerations = context.getBeansOfType(ProfilRemuneration.class);
 		mapCotisations = context.getBeansOfType(Cotisation.class);
-		//mapCotisationsImposables = context.getBeansOfType(Cotisation.class);
+		
 		
 		
 		

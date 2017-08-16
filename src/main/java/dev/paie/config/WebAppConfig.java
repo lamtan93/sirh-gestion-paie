@@ -3,6 +3,7 @@ package dev.paie.config;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.Import;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
@@ -10,7 +11,8 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan("dev.paie.web.controller")
+@EnableAspectJAutoProxy
+@ComponentScan({"dev.paie.web.controller", "dev.paie.config.aspect"})
 @Import({ServicesConfig.class})
 //@ImportResource("classpath:jdd-config.xml") --option n0 02
 public class WebAppConfig {

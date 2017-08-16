@@ -1,6 +1,5 @@
 package dev.paie.web.controller;
 
-import java.sql.SQLException;
 import java.util.List;
 
 import javax.persistence.EntityManager;

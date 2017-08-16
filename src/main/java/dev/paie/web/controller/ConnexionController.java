@@ -14,19 +14,4 @@ public class ConnexionController {
 	return "employes/connexion";
 	}
 	
-	/*
-	@RequestMapping(method = RequestMethod.POST, path="/logging")
-	public ModelAndView loggingWIthTokenCSRF(){
-		ModelAndView mav = new ModelAndView();
-		mav.setViewName("employes/connexion");
-		
-		if(token.equalsIgnoreCase("0f8bff7a-5930-4664-85e9-9fe0ff67fb26")){
-			return new ModelAndView("redirect:employes/creerEmploye");
-		}
-		
-		return mav;
-		
-		
-	}
-	*/
 }

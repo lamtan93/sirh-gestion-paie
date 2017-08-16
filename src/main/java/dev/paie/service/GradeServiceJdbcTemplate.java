@@ -46,11 +46,11 @@ public class GradeServiceJdbcTemplate implements GradeService{
 		
 //---------------------------2eme Methode with Spring Named Parameters------------------------
 		
-		String sql1 = "INSERT INTO Grade (id, code, nbHeuresBase,tauxBase ) VALUES(:id, :code, :nbHrBase, :taux)";
+		String sql1 = "INSERT INTO Grade (code, nbHeuresBase,tauxBase ) VALUES(:code, :nbHrBase, :taux)";
 		
 		Map<String,Object> paramMap = new HashMap<>();
 		
-		paramMap.put("id", nouveauGrade.getId());
+		
 		paramMap.put("code", nouveauGrade.getCode());
 		paramMap.put("nbHrBase", nouveauGrade.getNbHeuresBase());
 		paramMap.put("taux", nouveauGrade.getTauxBase());
