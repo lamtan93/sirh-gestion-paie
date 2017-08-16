@@ -3,8 +3,6 @@ package dev.paie.service;
 import java.util.HashMap;
 import java.util.Map;
 
-
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +22,7 @@ public class BulletinServiceImpl implements BulletinService {
 	
 	@Override
 	public Map<BulletinSalaire, ResultatCalculRemuneration> lister() {
+		
 		Map<BulletinSalaire, ResultatCalculRemuneration> listeBulletins = new HashMap<>();
 		
 		bulletins.findAll().stream().forEach(bull -> listeBulletins.put(bull, calculRemunerationService.calculer(bull)));

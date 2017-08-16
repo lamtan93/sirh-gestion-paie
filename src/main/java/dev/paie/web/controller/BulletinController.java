@@ -22,7 +22,6 @@ import dev.paie.repository.BulletinRepository;
 import dev.paie.repository.PeriodeRepository;
 import dev.paie.repository.RemunerationEmployeRepository;
 import dev.paie.service.BulletinService;
-import dev.paie.service.CalculerRemunerationService;
 
 @Controller
 @RequestMapping("/bulletins")
@@ -43,6 +42,7 @@ public class BulletinController {
 	
 	@Autowired
 	BulletinService bulletinService;
+	
 	
 	
 	
@@ -97,6 +97,23 @@ public class BulletinController {
 			e.getStackTrace();
 		}
 		
+		return mav;
+	}
+	
+	
+	//====================Display a bulletin==========================
+	
+	@RequestMapping(method=RequestMethod.GET, path="visualiserBulletin")
+	public ModelAndView displayBulletin(@RequestParam("bulletinId")int bulletinId){
+		ModelAndView mav = new ModelAndView();
+		
+	
+		BulletinSalaire bull = bulletinRepo.findOne(bulletinId);
+		
+		
+		mav.addObject("bulletinSalaire", bull);
+		
+		mav.setViewName("bulletins/visualiserBulletin");
 		return mav;
 	}
 	
